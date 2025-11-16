@@ -51,7 +51,9 @@
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\SoundEffects.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\PowerUp.cs" />
     <Compile Include="Assets\Scripts\PlayerCollision.cs" />
+    <Compile Include="Assets\Scripts\PowerUpSpawner.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\PlayerShooting.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
@@ -70,6 +72,7 @@
     <None Include="Assets\Packs\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Character\Back\CharacterBack.atlas.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\SDFFunctions.hlsl" />
+    <None Include="Assets\Shader\CustomGlow.shader" />
     <None Include="Assets\Packs\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Monster3\Left\Monster3Left.atlas.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />

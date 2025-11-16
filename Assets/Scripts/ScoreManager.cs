@@ -23,7 +23,6 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Highscore file path: " + filePath);
         LoadHighscore();
         UpdateScoreUI();
     }
