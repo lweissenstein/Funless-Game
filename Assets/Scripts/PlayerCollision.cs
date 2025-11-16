@@ -1,5 +1,4 @@
 using UnityEngine;
-// using UnityEngine.SceneManagement; // Later for Game Over or Reload Screen
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -7,12 +6,15 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-         
             Debug.Log("Game Over!");
 
-            UIManager.Instance.GameOver();
+            // Score speichern
+            ScoreManager sm = FindAnyObjectByType<ScoreManager>();
+            if (sm != null)
+                sm.SaveScoreToFile();
 
-            Time.timeScale = 0f;
+            // Game Over Screen
+            UIManager.Instance.GameOver();
         }
     }
 }

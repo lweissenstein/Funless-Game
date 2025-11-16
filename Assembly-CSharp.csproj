@@ -47,6 +47,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.2.11f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\PlayerCollision.cs" />
@@ -81,6 +82,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Monster1\Back\Monster1Back.atlas.txt" />
     <None Include="Assets\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Monster2\Front\Monster2Right.atlas.txt" />
+    <None Include="Assets\highscore.txt" />
     <None Include="Assets\Dungeon Crawler 2D Art Pack\Spine Projects\ExportedForUnity\Character\Front\CharacterFront.atlas.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />

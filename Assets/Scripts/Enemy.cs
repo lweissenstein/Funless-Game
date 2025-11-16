@@ -38,6 +38,8 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        FindAnyObjectByType<ScoreManager>().AddScore(100);
+
         Destroy(gameObject);
     }
 
