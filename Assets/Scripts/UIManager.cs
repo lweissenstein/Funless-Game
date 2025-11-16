@@ -3,11 +3,19 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
+
     public GameObject MainMenuPanel;
     public GameObject PausePanel;
     public GameObject GameOverPanel;
 
     private bool isPaused = false;
+
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
 
     void Start()
     {
@@ -35,6 +43,12 @@ public class UIManager : MonoBehaviour
         PausePanel.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+    }
+
+    public void RetryGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ReturnToMainMenu()

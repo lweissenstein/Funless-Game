@@ -10,8 +10,7 @@ public class PlayerCollision : MonoBehaviour
          
             Debug.Log("Game Over!");
 
-            //reload the scene
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            UIManager.Instance.GameOver();
         }
     }
 }
