@@ -51,6 +51,12 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             TakeDamage(1);
+
+            SoundEffects sfx = FindAnyObjectByType<SoundEffects>();
+            if (sfx != null)
+            {
+                sfx.PlayBulletHit(transform.position);
+            }
             Destroy(other.gameObject); // destroy bullet on hit
         }
     }
