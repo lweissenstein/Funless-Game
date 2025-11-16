@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     public GameObject GameOverPanel;
 
     private bool isPaused = false;
-    private static bool autoStartAfterLoad = false; // Flag für Retry
+    public static bool isRetry = false;
 
     void Awake()
     {
@@ -20,14 +20,22 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        if (autoStartAfterLoad)
+        if (isRetry)
         {
-            autoStartAfterLoad = false;
-            StartGame();
+            // Directly start game after retry
+            MainMenuPanel.SetActive(false);
+            PausePanel.SetActive(false);
+            GameOverPanel.SetActive(false);
+            Time.timeScale = 1f;
+            isRetry = false; // reset for next time
         }
         else
         {
-            ShowMainMenu();
+            // Normal first-time start: show main menu
+            MainMenuPanel.SetActive(true);
+            PausePanel.SetActive(false);
+            GameOverPanel.SetActive(false);
+            Time.timeScale = 0f;
         }
     }
 
@@ -36,7 +44,7 @@ public class UIManager : MonoBehaviour
         MainMenuPanel.SetActive(true);
         PausePanel.SetActive(false);
         GameOverPanel.SetActive(false);
-        Time.timeScale = 0f;
+        Time.timeScale = 0f; // pause the game
     }
 
     public void StartGame()
@@ -44,7 +52,7 @@ public class UIManager : MonoBehaviour
         MainMenuPanel.SetActive(false);
         PausePanel.SetActive(false);
         GameOverPanel.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = 1f; // start/resume game
     }
 
     public void PauseGame()
@@ -56,13 +64,17 @@ public class UIManager : MonoBehaviour
 
     public void RetryGame()
     {
-        autoStartAfterLoad = true; // Flag setzen
+        isRetry = true; // tell UIManager that we want to skip main menu
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ReturnToMainMenu()
     {
-        autoStartAfterLoad = false; // Flag löschen
+        MainMenuPanel.SetActive(true);
+        PausePanel.SetActive(false);
+        GameOverPanel.SetActive(false);
+        Time.timeScale = 0f;
+        isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -93,4 +105,3 @@ public class UIManager : MonoBehaviour
         }
     }
 }
-

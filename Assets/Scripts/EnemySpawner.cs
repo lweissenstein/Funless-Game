@@ -9,14 +9,14 @@ public class EnemySpawner : MonoBehaviour
 
 
     [Header("Spawn Settings")]
-    public float spawnInterval = 2f;   // Interval of spawns
-    public float spawnDistance = 1f;   // how far away from camera they spawn
+    public float spawnInterval = 2.0f;   // Interval of spawns
+    public float spawnDistance = 1.0f;   // how far away from camera they spawn
 
     [Header("Difficulty Scaling")]
     public float difficultyIncreaseRate = 0.1f;
     private float difficulty = 0f;
-    public float minimumSpawnInterval = 0.3f;
-    private float spawnRateIncrease = 0.02f;
+    public float minimumSpawnInterval = 0.2f;
+    public float spawnRateIncrease = 0.05f;
 
 
     private Camera cam;

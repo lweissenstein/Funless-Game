@@ -11,6 +11,8 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log("Game Over!");
 
             UIManager.Instance.GameOver();
+
+            Time.timeScale = 0f;
         }
     }
 }
