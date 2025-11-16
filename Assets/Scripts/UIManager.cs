@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public GameObject GameOverPanel;
 
     private bool isPaused = false;
+    private static bool autoStartAfterLoad = false; // Flag für Retry
 
     void Awake()
     {
@@ -19,7 +20,15 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        ShowMainMenu();
+        if (autoStartAfterLoad)
+        {
+            autoStartAfterLoad = false;
+            StartGame();
+        }
+        else
+        {
+            ShowMainMenu();
+        }
     }
 
     public void ShowMainMenu()
@@ -27,7 +36,7 @@ public class UIManager : MonoBehaviour
         MainMenuPanel.SetActive(true);
         PausePanel.SetActive(false);
         GameOverPanel.SetActive(false);
-        Time.timeScale = 0f; // pause the game
+        Time.timeScale = 0f;
     }
 
     public void StartGame()
@@ -35,7 +44,7 @@ public class UIManager : MonoBehaviour
         MainMenuPanel.SetActive(false);
         PausePanel.SetActive(false);
         GameOverPanel.SetActive(false);
-        Time.timeScale = 1f; // start/resume game
+        Time.timeScale = 1f;
     }
 
     public void PauseGame()
@@ -47,17 +56,13 @@ public class UIManager : MonoBehaviour
 
     public void RetryGame()
     {
-        Time.timeScale = 1f;
+        autoStartAfterLoad = true; // Flag setzen
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ReturnToMainMenu()
     {
-        MainMenuPanel.SetActive(true);
-        PausePanel.SetActive(false);
-        GameOverPanel.SetActive(false);
-        Time.timeScale = 0f;
-        isPaused = false;
+        autoStartAfterLoad = false; // Flag löschen
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -88,3 +93,4 @@ public class UIManager : MonoBehaviour
         }
     }
 }
+

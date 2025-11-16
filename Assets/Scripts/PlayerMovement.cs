@@ -49,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Bewegung
         transform.Translate(move.normalized * moveSpeed * Time.deltaTime);
+
+        ClampToCamera();
     }
 
     GameObject DetermineNextPrefab(bool isMoving, Vector2 move, Vector2 lastDir)
@@ -77,5 +79,20 @@ public class PlayerMovement : MonoBehaviour
         {
             child.gameObject.SetActive(child.gameObject == active);
         }
+    }
+
+    void ClampToCamera()
+    {
+        Camera cam = Camera.main;
+        float height = cam.orthographicSize;
+        float width = height * cam.aspect;
+
+        Vector3 pos = transform.position;
+        float offset = 0.5f; // optional Abstand zum Rand
+
+        pos.x = Mathf.Clamp(pos.x, -width + offset, width - offset);
+        pos.y = Mathf.Clamp(pos.y, -height + offset, height - offset);
+
+        transform.position = pos;
     }
 }
