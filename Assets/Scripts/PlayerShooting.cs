@@ -50,8 +50,11 @@ public class PlayerShooting : MonoBehaviour
             }
         }
         if (activeChild == null) return;
+        
+        Transform gunPivot = activeChild.Find("PlayerGunSprite");
+        if (gunPivot == null) return;
 
-        Transform spawnPoint = activeChild.Find("BulletSpawnPoint");
+        Transform spawnPoint = gunPivot.Find("BulletSpawnPoint");
         if (spawnPoint == null) return;
 
         GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
