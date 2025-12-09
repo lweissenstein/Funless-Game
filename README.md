@@ -45,6 +45,6 @@ Players can aim and shoot in any direction using the mouse, with the gun rotatin
 
 ## Assets & Licenses
 
-All third-party assets used in this project are freely licensed. See [licenses.md](licenses/licenses.md) for details.
+All third-party assets used in this project are freely licensed. See [licenses.md](Licenses/licenses.md) for details.
 
 ---
