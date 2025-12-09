@@ -13,8 +13,6 @@ public class PlayerCollision : MonoBehaviour
 
         if (other.CompareTag("PowerUp"))
         {
-            Debug.Log("Player picked up a PowerUp!");
-
             PowerUp pu = other.GetComponent<PowerUp>();
             if (pu != null)
             {
