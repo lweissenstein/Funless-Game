@@ -13,6 +13,11 @@ Players can aim and shoot in any direction using the mouse, with the gun rotatin
 
 ---
 
+## Play the Game
+
+You can try Funless Game online on Itch.io:  
+[Play Funless Game](https://weissenstein.itch.io/funless-game) 
+
 ## Key Features
 
 - **Top-down endless shooter** with progressively increasing difficulty  
