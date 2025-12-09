@@ -1,13 +1,20 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro; // Don't forget this!
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    [Header("Panels")]
     public GameObject MainMenuPanel;
     public GameObject PausePanel;
     public GameObject GameOverPanel;
+
+    [Header("Text References")]
+    public TextMeshProUGUI inGameScoreText;     // Drag 'inGameScore' here in Inspector
+    public TextMeshProUGUI gameOverScoreText;   // Drag 'GameOverScore' here in Inspector
+    public TextMeshProUGUI mainMenuScoreText;   // Drag 'MainMenuHighScore' here in Inspector
 
     private bool isPaused = false;
     public static bool isRetry = false;
@@ -20,13 +27,19 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        // FIX: Push references to ScoreManager immediately when scene starts
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.RefreshReferences(inGameScoreText, gameOverScoreText, mainMenuScoreText);
+        }
+
         if (isRetry)
         {
             MainMenuPanel.SetActive(false);
             PausePanel.SetActive(false);
             GameOverPanel.SetActive(false);
             Time.timeScale = 1f;
-            isRetry = false; 
+            isRetry = false;
         }
         else
         {
@@ -36,6 +49,8 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0f;
         }
     }
+
+    // ... Rest of your existing methods (ShowMainMenu, StartGame, etc.) stay the same ...
 
     public void ShowMainMenu()
     {
@@ -66,17 +81,13 @@ public class UIManager : MonoBehaviour
     {
         isRetry = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
         ScoreManager.Instance.ResetScore();
     }
 
     public void ReturnToMainMenu()
     {
-        MainMenuPanel.SetActive(true);
-        PausePanel.SetActive(false);
-        GameOverPanel.SetActive(false);
-        Time.timeScale = 0f;
-        isPaused = false;
+        // This reloads the scene, which triggers Start() again, 
+        // causing references to be refreshed correctly.
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

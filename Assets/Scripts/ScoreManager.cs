@@ -7,6 +7,8 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
 
     public int score = 0;
+
+    // These references will now be assigned by the UIManager
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverScoreText;
     public TextMeshProUGUI mainMenuScoreText;
@@ -15,7 +17,9 @@ public class ScoreManager : MonoBehaviour
 
     void Awake()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        // Remove OnSceneLoaded subscription, we will handle this via UIManager now
+        // SceneManager.sceneLoaded += OnSceneLoaded; 
+
         if (Instance == null)
         {
             Instance = this;
@@ -27,8 +31,13 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    void Start()
+    // Call this from UIManager.Start()
+    public void RefreshReferences(TextMeshProUGUI gameScore, TextMeshProUGUI overScore, TextMeshProUGUI menuScore)
     {
+        scoreText = gameScore;
+        gameOverScoreText = overScore;
+        mainMenuScoreText = menuScore;
+
         LoadHighscore();
         UpdateScoreUI();
     }
@@ -58,7 +67,8 @@ public class ScoreManager : MonoBehaviour
             gameOverScoreText.text = "Your Score: " + score;
     }
 
-    void LoadHighscore()
+    // Made public so we can call it after assigning references
+    public void LoadHighscore()
     {
         if (mainMenuScoreText == null) return;
 
@@ -69,17 +79,8 @@ public class ScoreManager : MonoBehaviour
     public void ResetHighscore()
     {
         PlayerPrefs.SetInt(HighscoreKey, 0);
-        LoadHighscore();
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        scoreText = GameObject.Find("inGameScore")?.GetComponent<TextMeshProUGUI>();
-        gameOverScoreText = GameObject.Find("GameOverScore")?.GetComponent<TextMeshProUGUI>();
-        mainMenuScoreText = GameObject.Find("MainMenuHighScore")?.GetComponent<TextMeshProUGUI>();
-
-        UpdateScoreUI();
-        LoadHighscore();
+        PlayerPrefs.Save(); // FIX: Force save immediately
+        LoadHighscore(); // Update the UI immediately
     }
 
     public void ResetScore()
@@ -87,6 +88,4 @@ public class ScoreManager : MonoBehaviour
         score = 0;
         UpdateScoreUI();
     }
-
-
 }
