@@ -13,6 +13,16 @@ Players can aim and shoot in any direction using the mouse, with the gun rotatin
 
 ---
 
+## Screenshots
+
+A few in-game screenshots. More can be found in [Screenshots](Screenshots) - but better try it for yourself!.
+
+| In-Game View 1 | In-Game View 2 | In-Game View 3 |
+| :---: | :---: | :---: |
+| ![Screenshot Astro Dungeon](Licenses/InGame1.png) | ![Screenshot Astro Dungeon](Licenses/InGame2.png) | ![Screenshot Astro Dungeon](Licenses/InGame3.png) |
+
+---
+
 ## Play the Game
 
 You can try Astro Dungeon online on Itch.io:  
