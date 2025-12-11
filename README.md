@@ -17,8 +17,9 @@ Players can aim and shoot in any direction using the mouse, with the gun rotatin
 
 A few in-game screenshots. More can be found in [Screenshots](Screenshots) - but better try it for yourself!.
 
-| :---: | :---: | :---: |
-| ![Screenshot Astro Dungeon](Screenshots/InGame1.png) | ![Screenshot Astro Dungeon](Screenshots/InGame7.png) | ![Screenshot Astro Dungeon](Screenshots/InGame6.png) |
+![Screenshot Astro Dungeon](Screenshots/InGame1.png)
+![Screenshot Astro Dungeon](Screenshots/InGame7.png)
+![Screenshot Astro Dungeon](Screenshots/InGame6.png)
 
 ---
 
